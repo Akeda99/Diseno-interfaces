@@ -1,0 +1,79 @@
+body{
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+.titulo {
+    color: black;
+    font-family: Arial, sans-serif;
+    text-align:left;
+    font-size: 50px;
+
+}
+p {
+    color: darkred;
+    font-size: 18px;
+    text-align: justify;
+}
+.sin_puntos {
+    list-style-type: none;
+    display: flex;
+    gap: 40px;
+}
+.sin_puntos2 {
+    list-style-type: none;
+    display: flex;
+    gap:60px;
+    margin-left: 300px;
+}
+.sin_puntos li {
+    cursor: pointer;
+}
+.sin_puntos2 li {
+    cursor: pointer;
+}
+.barra {
+    background-color: green;
+    display: flex;
+    width: 100%;
+}
+.contenedor_img_texto {
+    display: flex;
+    gap: 10%   ;
+    margin-top: 3%;
+}
+.contenedor_txt_img {
+    display: flex;
+    gap: 20px;
+}
+.cont_texto {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-right: 20%;
+}
+.img_principal {
+   margin-left:35% ;
+}
+.titulo_mundo {
+    
+   margin-left: 30%;
+   white-space: no-wrap;
+}
+.empre li{
+    width: 85%;
+    margin-bottom: 3%;
+    margin-left: 10%;
+}
+.contenedor_txt_img p{
+color: black;
+cursor: pointer;
+}
+.sin_puntos a{
+    color: black;
+    text-decoration: none;
+}
+.mundo_texto p{
+    color: black;
+    margin-left: 15%;
+}

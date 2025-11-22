@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planificador de Viajes</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>✈️ Planificador de Viajes</h1>
+            <p class="subtitle">Organiza tu próximo viaje de manera fácil y eficiente</p>
+        </div>
+    </header>
+
+    <nav class="tabs">
+        <div class="container">
+            <button class="tab-btn active" data-tab="itinerario">📅 Itinerario</button>
+            <button class="tab-btn" data-tab="costos">💰 Costos</button>
+            <button class="tab-btn" data-tab="checklist">✅ Checklist</button>
+            <button class="tab-btn" data-tab="mapas">🗺️ Mapas</button>
+            <button class="tab-btn" data-tab="moneda">💱 Conversión</button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Sección Itinerario -->
+        <section id="itinerario" class="tab-content active">
+            <h2>Itinerario Día por Día</h2>
+            <div class="itinerary-controls">
+                <input type="text" id="trip-name" placeholder="Nombre del viaje" class="input-field">
+                <input type="date" id="start-date" class="input-field">
+                <button id="add-day-btn" class="btn-primary">➕ Agregar Día</button>
+            </div>
+            <div id="itinerary-days" class="itinerary-container"></div>
+        </section>
+
+        <!-- Sección Calculadora de Costos -->
+        <section id="costos" class="tab-content">
+            <h2>Calculadora de Costos</h2>
+            <div class="cost-form">
+                <input type="text" id="expense-name" placeholder="Nombre del gasto" class="input-field">
+                <input type="number" id="expense-amount" placeholder="Cantidad" step="0.01" class="input-field">
+                <select id="expense-category" class="input-field">
+                    <option value="transporte">Transporte</option>
+                    <option value="alojamiento">Alojamiento</option>
+                    <option value="comida">Comida</option>
+                    <option value="actividades">Actividades</option>
+                    <option value="compras">Compras</option>
+                    <option value="otros">Otros</option>
+                </select>
+                <button id="add-expense-btn" class="btn-primary">Agregar Gasto</button>
+            </div>
+            <div id="expenses-list" class="expenses-container"></div>
+            <div class="total-summary">
+                <h3>Resumen de Costos</h3>
+                <div id="category-totals"></div>
+                <div class="grand-total">
+                    <strong>Total: $<span id="grand-total">0.00</span></strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Checklist -->
+        <section id="checklist" class="tab-content">
+            <h2>Checklist de Viaje</h2>
+            <div class="checklist-controls">
+                <input type="text" id="checklist-item" placeholder="Agregar item a la lista" class="input-field">
+                <select id="checklist-category" class="input-field">
+                    <option value="documentos">📄 Documentos</option>
+                    <option value="ropa">👕 Ropa</option>
+                    <option value="electronica">📱 Electrónica</option>
+                    <option value="salud">💊 Salud</option>
+                    <option value="otros">📦 Otros</option>
+                </select>
+                <button id="add-checklist-btn" class="btn-primary">Agregar</button>
+            </div>
+            <div id="checklist-items" class="checklist-container"></div>
+            <div class="checklist-stats">
+                <p>Completado: <span id="completed-count">0</span> / <span id="total-count">0</span></p>
+            </div>
+        </section>
+
+        <!-- Sección Mapas -->
+        <section id="mapas" class="tab-content">
+            <h2>Mapas y Ubicaciones</h2>
+            <div class="map-controls">
+                <input type="text" id="location-input" placeholder="Buscar ubicación o dirección" class="input-field">
+                <button id="search-location-btn" class="btn-primary">🔍 Buscar</button>
+                <button id="add-marker-btn" class="btn-secondary">📍 Agregar Marcador</button>
+                <button id="clear-markers-btn" class="btn-secondary">🗑️ Limpiar</button>
+            </div>
+            <div id="map" class="map-container"></div>
+            <div id="saved-locations" class="saved-locations"></div>
+        </section>
+
+        <!-- Sección Conversión de Moneda -->
+        <section id="moneda" class="tab-content">
+            <h2>Conversión de Moneda</h2>
+            <div class="currency-converter">
+                <div class="converter-input">
+                    <input type="number" id="amount-input" placeholder="Cantidad" step="0.01" class="input-field">
+                    <select id="from-currency" class="input-field">
+                        <option value="USD">USD - Dólar Estadounidense</option>
+                        <option value="EUR">EUR - Euro</option>
+                        <option value="GBP">GBP - Libra Esterlina</option>
+                        <option value="JPY">JPY - Yen Japonés</option>
+                        <option value="MXN">MXN - Peso Mexicano</option>
+                        <option value="PEN">PEN - Sol Peruano</option>
+                        <option value="ARS">ARS - Peso Argentino</option>
+                        <option value="BRL">BRL - Real Brasileño</option>
+                    </select>
+                </div>
+                <div class="converter-arrow">⇄</div>
+                <div class="converter-output">
+                    <input type="number" id="converted-amount" placeholder="Resultado" readonly class="input-field">
+                    <select id="to-currency" class="input-field">
+                        <option value="USD">USD - Dólar Estadounidense</option>
+                        <option value="EUR">EUR - Euro</option>
+                        <option value="GBP">GBP - Libra Esterlina</option>
+                        <option value="JPY">JPY - Yen Japonés</option>
+                        <option value="MXN">MXN - Peso Mexicano</option>
+                        <option value="PEN">PEN - Sol Peruano</option>
+                        <option value="ARS">ARS - Peso Argentino</option>
+                        <option value="BRL">BRL - Real Brasileño</option>
+                    </select>
+                </div>
+                <button id="convert-btn" class="btn-primary">Convertir</button>
+            </div>
+            <div id="exchange-rate" class="exchange-rate"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Planificador de Viajes - Organiza tus aventuras</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio 4 - Mini Sitio con Navegación y Carrito</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#inicio">
+                <i class="bi bi-shop"></i> Tienda Online
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#productos">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link position-relative" href="#" id="cartIcon">
+                            <i class="bi bi-cart3"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cartCount">
+                                0
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="inicio" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-12 text-center text-white">
+                    <h1 class="display-4 fw-bold mb-4">Bienvenido a Nuestra Tienda</h1>
+                    <p class="lead mb-4">Descubre los mejores productos con la mejor calidad</p>
+                    <a href="#productos" class="btn btn-light btn-lg">
+                        <i class="bi bi-arrow-down"></i> Ver Productos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="productos" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Nuestros Productos</h2>
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="card h-100 shadow">
+                        <img src="./img/Apple_16-inch-MacBook-Pro_111319.jpg.og.jpg" class="card-img-top" alt="Laptop">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Laptop Pro</h5>
+                            <p class="card-text text-muted">Alto rendimiento para profesionales</p>
+                            <div class="mt-auto">
+                                <p class="card-price">$1,299.99</p>
+                                <button class="btn btn-primary w-100 add-to-cart" data-product="Laptop Pro" data-price="1299.99">
+                                    <i class="bi bi-cart-plus"></i> Agregar al carrito
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="card h-100 shadow">
+                        <img src="./img/smartphone.jpg" class="card-img-top" alt="Smartphone">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Smartphone Ultra</h5>
+                            <p class="card-text text-muted">Pantalla AMOLED y cámara 108MP</p>
+                            <div class="mt-auto">
+                                <p class="card-price">$899.99</p>
+                                <button class="btn btn-primary w-100 add-to-cart" data-product="Smartphone Ultra" data-price="899.99">
+                                    <i class="bi bi-cart-plus"></i> Agregar al carrito
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="card h-100 shadow">
+                        <img src="./img/01.JBL_Tune_720BT_ProductImage_Hero_Black.png" class="card-img-top" alt="Auriculares">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Auriculares Premium</h5>
+                            <p class="card-text text-muted">Cancelación de ruido activa</p>
+                            <div class="mt-auto">
+                                <p class="card-price">$249.99</p>
+                                <button class="btn btn-primary w-100 add-to-cart" data-product="Auriculares Premium" data-price="249.99">
+                                    <i class="bi bi-cart-plus"></i> Agregar al carrito
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="card h-100 shadow">
+                        <img src="./img/Tablet-Lenovo-Tab-M10-4GB-64GB-Wuxga-Chip-10-POIT-HD-10.1.jpg" class="card-img-top" alt="Tablet">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Tablet Pro</h5>
+                            <p class="card-text text-muted">Perfecta para trabajo y entretenimiento</p>
+                            <div class="mt-auto">
+                                <p class="card-price">$599.99</p>
+                                <button class="btn btn-primary w-100 add-to-cart" data-product="Tablet Pro" data-price="599.99">
+                                    <i class="bi bi-cart-plus"></i> Agregar al carrito
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Contacto</h2>
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8 col-lg-6">
+                    <div class="card shadow">
+                        <div class="card-body p-4">
+                            <form id="contactForm" novalidate>
+                                <div class="mb-3">
+                                    <label for="nombre" class="form-label">
+                                        <i class="bi bi-person"></i> Nombre completo
+                                    </label>
+                                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                    <div class="invalid-feedback">
+                                        Por favor, ingresa tu nombre completo.
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">
+                                        <i class="bi bi-envelope"></i> Email
+                                    </label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                    <div class="invalid-feedback">
+                                        Por favor, ingresa un email válido.
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="mensaje" class="form-label">
+                                        <i class="bi bi-chat-left-text"></i> Mensaje
+                                    </label>
+                                    <textarea class="form-control" id="mensaje" name="mensaje" rows="5" required></textarea>
+                                    <div class="invalid-feedback">
+                                        Por favor, ingresa un mensaje.
+                                    </div>
+                                </div>
+                                
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <i class="bi bi-send"></i> Enviar Mensaje
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="successModalLabel">
+                        <i class="bi bi-check-circle"></i> Mensaje Enviado
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+                    <p class="mt-3 fs-5">¡Tu mensaje ha sido enviado correctamente!</p>
+                    <p class="text-muted">Nos pondremos en contacto contigo pronto.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0">&copy; 2024 Tienda Online. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
+

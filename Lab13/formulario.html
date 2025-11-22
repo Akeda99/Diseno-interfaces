@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contratación - Freelance Hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" style="text-decoration: none;"><h1 class="logo">FREELANCE HUB</h1></a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="formulario.html" class="active">Contrata</a></li>
+                <li><a href="galeria.html">Portfolio</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="form-section">
+            <h2>Solicita un Freelancer</h2>
+            <p class="subtitle">Completa el formulario y te contactaremos con el profesional ideal</p>
+
+            <form id="registroForm" class="form">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre">
+                    <span class="error-message" id="errorNombre"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" id="apellido" name="apellido" placeholder="Ingrese su apellido">
+                    <span class="error-message" id="errorApellido"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="dni">DNI:</label>
+                    <input type="text" id="dni" name="dni" placeholder="8 dígitos numéricos" maxlength="8">
+                    <span class="error-message" id="errorDni"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="text" id="email" name="email" placeholder="ejemplo@correo.com">
+                    <span class="error-message" id="errorEmail"></span>
+                </div>
+
+                <button type="submit" class="btn-submit">Enviar Solicitud</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Freelance Hub - Conectando Talento con Oportunidades</p>
+    </footer>
+
+    <script src="validacion.js"></script>
+</body>
+</html>

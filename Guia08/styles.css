@@ -1,0 +1,310 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+        }
+        body{
+            font-family: 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #000;
+            color: #fff;
+        }
+        header{
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            color: white;
+        }
+        nav ul{
+            list-style: none;
+            display: flex;
+            gap:30%;
+            font-size: 20px;
+            
+        }
+        .header-botones{
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .header-botones .iniciar {
+            background: #1db954;
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 500px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            
+        }
+
+        .header-botones .iniciar:hover {
+            background: #1ed760;
+            transform: scale(1.05);
+        }
+        .header-botones .registrar {
+            background: transparent;
+            color: #1db954;
+            padding: 14px 32px;
+            border: 2px solid #1db954;
+            border-radius: 500px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+            transition: color 0.3s ease;
+            cursor: pointer;
+            align-items: center;
+            text-align: center;
+        }
+
+        .header-botones .registrar::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: #1db954;
+            transition: height 0.3s ease;
+            z-index: -1;
+        }
+        .header-botones .registrar:hover {
+            color: #000;
+        }
+
+        .header-botones .registrar:hover::before {
+            height: 100%;
+        }
+
+        .header-botones h3{
+            cursor: pointer;
+        }
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: #1db954;
+        }
+                nav li {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+                nav li:hover {
+            color: #1db954;
+        }
+        .main{
+            margin-top: 80px;
+            padding: 120px 40px 80px;
+            background: linear-gradient(180deg, #1db954 0%, #000 100%);
+            text-align: center;
+            display: block;
+            
+        }
+        .main h1{
+            color: white;
+            
+        }
+        .main p{
+            color: white;
+            margin-top: 1%;
+        }
+        .main a{
+            background: #1db954;
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 500px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-top: 2%;
+        }
+        .main a:hover {
+            background: #1ed760;
+            box-shadow: 0 0 20px #1db954, 0 0 40px #1db954;
+            transform: translateY(-2px);
+        }
+        .planes {
+            padding: 80px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .planes h2 {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 900;
+        }
+
+        .container-planes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .plan-card {
+            background: #181818;
+            padding: 40px;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .plan-card:hover {
+            background: #282828;
+            transform: translateY(-5px);
+        }
+
+        .plan-card h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #1db954;
+        }
+        .plan-card .price {
+            font-size: 40px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .plan-card ul {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .plan-card li {
+            padding: 10px 0;
+            border-bottom: 1px solid #282828;
+        }
+
+        .plan-card li:before {
+            content: "✓ ";
+            color: #1db954;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .plan-card .iniciar {
+            background: #1db954;
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 500px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            
+        }
+
+        .plan-card .iniciar:hover {
+            background: #1ed760;
+            transform: scale(1.05);
+        }
+        .razon {
+            padding: 80px 40px;
+            background: #181818;
+        }
+
+        .razon h2 {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 900;
+        }
+        .container-razon {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .card-razon {
+            text-align: center;
+        }
+        .icon {
+            width: 80px;
+            height: 80px;
+            background: #1db954;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+        }
+
+        .card-razon h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .card-razon p {
+            opacity: 0.7;
+            line-height: 1.6;
+        }
+        .grid-footer {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .card-footer h4{
+            font-size: 20px;
+            margin-bottom: 15px;
+            margin-top:20px ;
+            color: #1db954;
+        }
+        .card-footer li{
+            margin-top: 20px;
+            color: #b3b3b3;
+        }
+        .card-footer li:hover {
+            color: #fff;
+            cursor: pointer;
+        }
+        .footer-bot{
+        text-align: center;
+        margin: 20px 60px;
+        padding-top: 20px;
+        border-top: 1px solid #282828;
+        color: #b3b3b3;
+        }
+        .footer-bot {
+            font-family: 'Courier New', Courier, monospace;
+             color: #6a6767;
+        }
+        @media (max-width: 768px) {
+            .main h1 {
+                font-size: 40px;
+            }
+
+            .main p {
+                font-size: 18px;
+            }
+
+            nav ul {
+                display: none;
+            }
+        }

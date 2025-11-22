@@ -1,0 +1,57 @@
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 50%, #dee2e6 100%);
+    min-height: 100vh;
+    padding: 2rem 0;
+}
+
+.profile-card {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border: none;
+    border-radius: 15px;
+}
+
+.profile-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border: 5px solid #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-section {
+    padding: 1.5rem;
+}
+
+.profile-name {
+    color: #2c3e50;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.profile-profession {
+    color: #6c757d;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.profile-bio {
+    color: #495057;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.btn-custom {
+    margin: 0.25rem;
+}
+
+@media (max-width: 768px) {
+    .profile-img {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .profile-section {
+        text-align: center;
+    }
+}
