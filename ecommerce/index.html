@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Tu Tienda de Tecnología</title>
+    <link rel="stylesheet" href="./styles/styles_index.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">🛒 TechStore</div>
+            <div class="nav-center">
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#testimonios">Testimonios</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="atencion.html">Soporte</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="user-section">
+                <div class="cart-icon" onclick="openCart()">
+                    🛒
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <div id="userSection">
+                    <button class="login-btn" onclick="openLoginModal()">Iniciar Sesión</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Login/Register Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeAuthModal()">×</button>
+            
+            <!-- Login Form -->
+            <div id="loginForm">
+                <h2>Iniciar Sesión</h2>
+                <div class="error-message" id="loginError"></div>
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="loginEmail">Correo Electrónico</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Contraseña</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Iniciar Sesión</button>
+                </form>
+                <div class="form-footer">
+                    ¿No tienes cuenta? <a onclick="showRegisterForm()">Regístrate aquí</a>
+                </div>
+            </div>
+
+            <!-- Register Form -->
+            <div id="registerForm" style="display: none;">
+                <h2>Crear Cuenta</h2>
+                <div class="error-message" id="registerError"></div>
+                <form onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label for="registerName">Nombre Completo</label>
+                        <input type="text" id="registerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Correo Electrónico</label>
+                        <input type="email" id="registerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Contraseña</label>
+                        <input type="password" id="registerPassword" required minlength="6">
+                    </div>
+                    <button type="submit" class="submit-btn">Registrarse</button>
+                </form>
+                <div class="form-footer">
+                    ¿Ya tienes cuenta? <a onclick="showLoginForm()">Inicia sesión aquí</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content" style="max-width: 600px;">
+            <button class="close-modal" onclick="closeCartModal()">×</button>
+            <h2>Carrito de Compras</h2>
+            <div id="cartContent">
+                <!-- Cart items will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <h1>Bienvenido a TechStore</h1>
+        <p>Los mejores productos de tecnología al mejor precio</p>
+        <a href="#productos" class="btn">Ver Productos</a>
+    </section>
+
+    <!-- Carousel - Más Vendidos -->
+    <section class="carousel-section">
+        <h2 class="section-title">🔥 Lo Más Vendido</h2>
+        <div class="carousel">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-item">
+                    <img src="./img/laptop.jpg" alt="Laptop Pro">
+                    <div class="carousel-content">
+                        <h3>Laptop Pro 2024</h3>
+                        <p>Potencia y rendimiento en un diseño ultradelgado. Ideal para profesionales y creativos.</p>
+                        <div class="price">S/1,299.99</div>
+                        <button class="btn">Comprar Ahora</button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="./img/smartphone.jpg" alt="Smartphone X">
+                    <div class="carousel-content">
+                        <h3>Smartphone X Plus</h3>
+                        <p>La mejor cámara del mercado con procesador de última generación.</p>
+                        <div class="price">S/899.99</div>
+                        <button class="btn">Comprar Ahora</button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="./img/auriculares.jpg" alt="Auriculares">
+                    <div class="carousel-content">
+                        <h3>Auriculares Pro Noise</h3>
+                        <p>Cancelación de ruido activa y sonido premium para una experiencia única.</p>
+                        <div class="price">S/249.99</div>
+                        <button class="btn">Comprar Ahora</button>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-buttons">
+                <button class="carousel-btn" onclick="prevSlide()">‹</button>
+                <button class="carousel-btn" onclick="nextSlide()">›</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="productos" class="products-section">
+        <h2 class="section-title">Nuestros Productos</h2>
+        <div class="products-container">
+            <!-- Filters -->
+            <aside class="filters">
+                <div class="filter-group">
+                    <h3>Categorías</h3>
+                    <div class="filter-option">
+                        <input type="checkbox" id="laptops" onchange="filterProducts()">
+                        <label for="laptops">Laptops</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="smartphones" onchange="filterProducts()">
+                        <label for="smartphones">Smartphones</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="audio" onchange="filterProducts()">
+                        <label for="audio">Audio</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="accesorios" onchange="filterProducts()">
+                        <label for="accesorios">Accesorios</label>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h3>Rango de Precio</h3>
+                    <div class="price-range">
+                        <input type="number" placeholder="Min" id="minPrice" onchange="filterProducts()">
+                        <input type="number" placeholder="Max" id="maxPrice" onchange="filterProducts()">
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h3>Marca</h3>
+                    <div class="filter-option">
+                        <input type="checkbox" id="techpro" onchange="filterProducts()">
+                        <label for="techpro">TechPro</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="soundmax" onchange="filterProducts()">
+                        <label for="soundmax">SoundMax</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="smarttech" onchange="filterProducts()">
+                        <label for="smarttech">SmartTech</label>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Products Grid -->
+            <div class="products-content">
+                <div class="products-header">
+                    <h3 id="productCount">Mostrando 12 productos</h3>
+                    <div class="sort-options">
+                        <select id="sortSelect" onchange="sortProducts()">
+                            <option value="default">Ordenar por</option>
+                            <option value="price-asc">Precio: Menor a Mayor</option>
+                            <option value="price-desc">Precio: Mayor a Menor</option>
+                            <option value="name-asc">Nombre: A-Z</option>
+                            <option value="name-desc">Nombre: Z-A</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="products-grid" id="productsGrid">
+                    <!-- Los productos se generarán dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonios" class="testimonials">
+        <div class="testimonials-container">
+            <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">MG</div>
+                        <div>
+                            <h4>María González</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>"Excelente servicio y productos de calidad. La laptop que compré superó mis expectativas. ¡Totalmente recomendado!"</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">JR</div>
+                        <div>
+                            <h4>Juan Rodríguez</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>"Los auriculares que compré tienen una calidad de sonido increíble. El envío fue rápido y el precio muy competitivo."</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">AS</div>
+                        <div>
+                            <h4>Ana Silva</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>"Mejor tienda de tecnología online. Atención al cliente excepcional y productos originales. ¡Volveré a comprar!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>TechStore</h3>
+                <p>Tu tienda de confianza para productos tecnológicos de alta calidad.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#testimonios">Testimonios</a></li>
+                    <li><a href="nosotros.html">Sobre Nosotros</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Atención al Cliente</h3>
+                <ul>
+                    <li><a href="atencion.html">Preguntas Frecuentes</a></li>
+                    <li><a href="atencion.html">Envíos</a></li>
+                    <li><a href="atencion.html">Devoluciones</a></li>
+                    <li><a href="atencion.html">Garantía</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <ul>
+                    <li>📧 info@techstore.com</li>
+                    <li>📱 +1 (555) 123-4567</li>
+                    <li>📍 123 Tech Avenue, CA</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TechStore. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+<script src="./script/script_index.js"></script>
+</body>
+</html>

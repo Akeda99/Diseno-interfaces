@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - TechStore</title>
+    <link rel="stylesheet" href="./styles/styles_contacto.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">🛒 TechStore</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#productos">Productos</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>💼 Únete a TechStore</h1>
+        <p>¿Quieres formar parte de nuestro equipo o convertirte en distribuidor? ¡Nos encantaría conocerte!</p>
+    </section>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Options Grid -->
+        <div class="options-grid">
+            <!-- Trabajar con Nosotros -->
+            <div class="option-card" onclick="openModal('trabajo')">
+                <div class="option-icon">👨‍💼</div>
+                <h2>Trabaja con Nosotros</h2>
+                <p>Únete a un equipo dinámico y apasionado por la tecnología. Ofrecemos:</p>
+                <ul>
+                    <li>Ambiente laboral flexible</li>
+                    <li>Oportunidades de crecimiento</li>
+                    <li>Beneficios competitivos</li>
+                    <li>Cultura innovadora</li>
+                    <li>Capacitación continua</li>
+                </ul>
+                <button class="btn">Postular Ahora</button>
+            </div>
+
+            <!-- Ser Distribuidor -->
+            <div class="option-card" onclick="openModal('distribuidor')">
+                <div class="option-icon">🤝</div>
+                <h2>Sé Nuestro Distribuidor</h2>
+                <p>Expande tu negocio asociándote con TechStore. Te ofrecemos:</p>
+                <ul>
+                    <li>Precios preferenciales</li>
+                    <li>Productos de calidad garantizada</li>
+                    <li>Soporte técnico y comercial</li>
+                    <li>Material promocional</li>
+                    <li>Territorio exclusivo</li>
+                </ul>
+                <button class="btn">Solicitar Información</button>
+            </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact-info">
+            <h2>Otras Formas de Contactarnos</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-icon">📧</div>
+                    <h3>Email</h3>
+                    <p>rrhh@techstore.com</p>
+                    <p>ventas@techstore.com</p>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">📱</div>
+                    <h3>Teléfono</h3>
+                    <p>+1 (555) 123-4567</p>
+                    <p>Lun-Vie 9am-6pm</p>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">📍</div>
+                    <h3>Oficina</h3>
+                    <p>123 Tech Avenue</p>
+                    <p>California, USA</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Trabajo -->
+    <div class="modal" id="modalTrabajo">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('trabajo')">×</button>
+            <h2>👨‍💼 Trabaja con Nosotros</h2>
+            <p class="subtitle">Completa el formulario y nos pondremos en contacto contigo</p>
+
+            <div class="success-message" id="successTrabajo">
+                ✓ ¡Gracias por tu interés! Hemos recibido tu solicitud y nos pondremos en contacto pronto.
+            </div>
+
+            <form id="formTrabajo" onsubmit="submitForm(event, 'trabajo')">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nombreTrabajo">Nombre *</label>
+                        <input type="text" id="nombreTrabajo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellidoTrabajo">Apellido *</label>
+                        <input type="text" id="apellidoTrabajo" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="emailTrabajo">Email *</label>
+                        <input type="email" id="emailTrabajo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefonoTrabajo">Teléfono *</label>
+                        <input type="tel" id="telefonoTrabajo" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="puestoInteres">Puesto de Interés *</label>
+                    <select id="puestoInteres" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="ventas">Ventas</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="desarrollo">Desarrollo/IT</option>
+                        <option value="soporte">Soporte Técnico</option>
+                        <option value="logistica">Logística</option>
+                        <option value="administracion">Administración</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="experiencia">Experiencia Previa</label>
+                    <textarea id="experiencia" placeholder="Cuéntanos sobre tu experiencia laboral relevante..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="motivacion">¿Por qué quieres trabajar con nosotros? *</label>
+                    <textarea id="motivacion" required placeholder="Cuéntanos qué te motiva a unirte a TechStore..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="cv">Link a tu CV (LinkedIn, Google Drive, etc.)</label>
+                    <input type="url" id="cv" placeholder="https://...">
+                </div>
+
+                <button type="submit" class="submit-btn">Enviar Solicitud</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Distribuidor -->
+    <div class="modal" id="modalDistribuidor">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('distribuidor')">×</button>
+            <h2>🤝 Conviértete en Distribuidor</h2>
+            <p class="subtitle">Completa el formulario y un asesor se comunicará contigo</p>
+
+            <div class="success-message" id="successDistribuidor">
+                ✓ ¡Gracias por tu interés! Hemos recibido tu solicitud y nos pondremos en contacto pronto.
+            </div>
+
+            <form id="formDistribuidor" onsubmit="submitForm(event, 'distribuidor')">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nombreDistribuidor">Nombre Completo *</label>
+                        <input type="text" id="nombreDistribuidor" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="empresaDistribuidor">Empresa *</label>
+                        <input type="text" id="empresaDistribuidor" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="emailDistribuidor">Email *</label>
+                        <input type="email" id="emailDistribuidor" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefonoDistribuidor">Teléfono *</label>
+                        <input type="tel" id="telefonoDistribuidor" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="pais">País *</label>
+                        <select id="pais" required>
+                            <option value="">Selecciona tu país</option>
+                            <option value="PE">Perú</option>
+                            <option value="AR">Argentina</option>
+                            <option value="CL">Chile</option>
+                            <option value="CO">Colombia</option>
+                            <option value="MX">México</option>
+                            <option value="ES">España</option>
+                            <option value="US">Estados Unidos</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="ciudad">Ciudad *</label>
+                        <input type="text" id="ciudad" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipoNegocio">Tipo de Negocio *</label>
+                    <select id="tipoNegocio" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="minorista">Tienda Minorista</option>
+                        <option value="mayorista">Mayorista</option>
+                        <option value="online">E-commerce</option>
+                        <option value="corporativo">Ventas Corporativas</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="experienciaDistribuidor">Experiencia en el Sector</label>
+                    <textarea id="experienciaDistribuidor" placeholder="Cuéntanos sobre tu experiencia distribuyendo productos tecnológicos..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="volumen">Volumen de Compra Mensual Estimado *</label>
+                    <select id="volumen" required>
+                        <option value="">Selecciona un rango</option>
+                        <option value="bajo">Menos de $10,000</option>
+                        <option value="medio">$10,000 - $50,000</option>
+                        <option value="alto">$50,000 - $100,000</option>
+                        <option value="muy-alto">Más de $100,000</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="comentarios">Comentarios Adicionales</label>
+                    <textarea id="comentarios" placeholder="¿Algo más que quieras compartir?"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Enviar Solicitud</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>TechStore</h3>
+                <p>Tu tienda de confianza para productos tecnológicos de alta calidad.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.html#productos">Productos</a></li>
+                    <li><a href="nosotros.html">Sobre Nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Atención al Cliente</h3>
+                <ul>
+                    <li><a href="atencion.html">Preguntas Frecuentes</a></li>
+                    <li><a href="atencion.html#envios">Envíos</a></li>
+                    <li><a href="atencion.html#devoluciones">Devoluciones</a></li>
+                    <li><a href="atencion.html#garantia">Garantía</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <ul>
+                    <li>📧 info@techstore.com</li>
+                    <li>📱 +1 (555) 123-4567</li>
+                    <li>📍 123 Tech Avenue, CA</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TechStore. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+<script src="./script/script_contacto.js"></script>
+</body>
+</html>

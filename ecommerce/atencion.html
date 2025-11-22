@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atención al Cliente - TechStore</title>
+    <link rel="stylesheet" href="./styles/styles_atencion.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">🛒 TechStore</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#productos">Productos</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="atencion.html">Soporte</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>🛟 Atención al Cliente</h1>
+        <p>Estamos aquí para ayudarte. Encuentra respuestas a tus preguntas o contáctanos directamente</p>
+    </section>
+
+    <!-- Quick Links -->
+    <div class="quick-links">
+        <a href="#faq" class="quick-link-card" style="text-decoration: none; color: inherit;">
+            <div class="quick-link-icon">❓</div>
+            <h3>Preguntas Frecuentes</h3>
+            <p>Respuestas a las dudas más comunes</p>
+        </a>
+        <a href="#envios" class="quick-link-card" style="text-decoration: none; color: inherit;">
+            <div class="quick-link-icon">📦</div>
+            <h3>Envíos</h3>
+            <p>Información sobre entregas</p>
+        </a>
+        <a href="#devoluciones" class="quick-link-card" style="text-decoration: none; color: inherit;">
+            <div class="quick-link-icon">🔄</div>
+            <h3>Devoluciones</h3>
+            <p>Política de devoluciones</p>
+        </a>
+        <a href="#garantia" class="quick-link-card" style="text-decoration: none; color: inherit;">
+            <div class="quick-link-icon">🛡️</div>
+            <h3>Garantía</h3>
+            <p>Cobertura y protección</p>
+        </a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Preguntas Frecuentes -->
+        <section id="faq" class="section">
+            <div class="section-header">
+                <span class="section-icon">❓</span>
+                <h2>Preguntas Frecuentes</h2>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>¿Cómo puedo realizar un pedido?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Para realizar un pedido, simplemente navega por nuestro catálogo, selecciona los productos que desees, agrégalos al carrito y procede al pago. Necesitarás crear una cuenta o iniciar sesión para completar tu compra. El proceso es rápido, seguro y guiado paso a paso.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>¿Qué métodos de pago aceptan?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Aceptamos tarjetas de crédito y débito (Visa, Mastercard, American Express), PayPal y transferencias bancarias. Todos los pagos son procesados de forma segura con encriptación SSL para proteger tu información.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>¿Mis datos de pago están seguros?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Absolutamente. Utilizamos tecnología de encriptación SSL de última generación y cumplimos con todos los estándares de seguridad PCI DSS. No almacenamos información completa de tarjetas de crédito en nuestros servidores.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>¿Puedo modificar o cancelar mi pedido?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Sí, puedes modificar o cancelar tu pedido dentro de las primeras 2 horas después de realizado. Después de este tiempo, el pedido entra en proceso de preparación y no podrá ser modificado. Contáctanos inmediatamente si necesitas hacer cambios.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>¿Los productos son originales?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Todos nuestros productos son 100% originales y provienen directamente de los fabricantes o distribuidores autorizados. Cada producto incluye su garantía oficial del fabricante.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>¿Emiten factura?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Sí, emitimos factura electrónica para todas las compras. La factura se envía automáticamente a tu correo electrónico junto con la confirmación del pedido. También puedes descargarla desde tu cuenta en cualquier momento.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Envíos -->
+        <section id="envios" class="section">
+            <div class="section-header">
+                <span class="section-icon">📦</span>
+                <h2>Información de Envíos</h2>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>🚚 Tiempos de Entrega</h3>
+                    <ul>
+                        <li><strong>Envío Estándar:</strong> 5-7 días hábiles</li>
+                        <li><strong>Envío Express:</strong> 2-3 días hábiles</li>
+                        <li><strong>Envío Premium:</strong> 24-48 horas</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">Los tiempos pueden variar según la ubicación y disponibilidad del producto.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>💰 Costos de Envío</h3>
+                    <div class="highlight-box">
+                        <strong>¡ENVÍO GRATIS!</strong><br>
+                        En compras superiores a $100
+                    </div>
+                    <ul>
+                        <li>Nacional: $5.99</li>
+                        <li>Express: $12.99</li>
+                        <li>Premium: $19.99</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>📍 Cobertura</h3>
+                    <p>Realizamos envíos a todo el territorio nacional y a los siguientes países:</p>
+                    <ul>
+                        <li>Perú</li>
+                        <li>Argentina</li>
+                        <li>Chile</li>
+                        <li>Colombia</li>
+                        <li>México</li>
+                        <li>España</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>📦 Seguimiento</h3>
+                    <p>Una vez que tu pedido sea enviado, recibirás:</p>
+                    <ul>
+                        <li>Número de rastreo por correo</li>
+                        <li>Actualizaciones en tiempo real</li>
+                        <li>Notificación de entrega</li>
+                        <li>Opción de reprogramar entrega</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 2rem;">
+                <strong>Nota importante:</strong> Todos los pedidos son cuidadosamente empaquetados para garantizar que lleguen en perfectas condiciones. Si detectas algún daño en el paquete al momento de la entrega, por favor repórtalo inmediatamente al transportista y contáctanos.
+            </div>
+        </section>
+
+        <!-- Devoluciones -->
+        <section id="devoluciones" class="section">
+            <div class="section-header">
+                <span class="section-icon">🔄</span>
+                <h2>Política de Devoluciones</h2>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>⏰ Plazo</h3>
+                    <p>Tienes <strong style="color: #667eea;">30 días</strong> desde la recepción del producto para solicitar una devolución o cambio.</p>
+                    <div class="highlight-box">
+                        El producto debe estar en su empaque original, sin usar y con todos sus accesorios.
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3>✅ Condiciones</h3>
+                    <p>Aceptamos devoluciones si:</p>
+                    <ul>
+                        <li>El producto está defectuoso</li>
+                        <li>Recibiste un producto equivocado</li>
+                        <li>El producto llegó dañado</li>
+                        <li>No estás satisfecho con tu compra</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>📝 Proceso</h3>
+                    <ol style="padding-left: 1.5rem; line-height: 2;">
+                        <li>Contacta nuestro servicio al cliente</li>
+                        <li>Proporciona número de pedido y motivo</li>
+                        <li>Recibe autorización de devolución</li>
+                        <li>Envía el producto</li>
+                        <li>Recibe reembolso o cambio</li>
+                    </ol>
+                </div>
+
+                <div class="info-card">
+                    <h3>💳 Reembolsos</h3>
+                    <p>Los reembolsos se procesan en <strong style="color: #667eea;">5-10 días hábiles</strong> después de recibir el producto devuelto.</p>
+                    <p style="margin-top: 1rem;">El dinero se acreditará al mismo método de pago utilizado en la compra original.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 2rem;">
+                <strong>Productos no retornables:</strong> Por razones de higiene y seguridad, no se aceptan devoluciones de auriculares in-ear abiertos, productos de cuidado personal y software descargable.
+            </div>
+        </section>
+
+        <!-- Garantía -->
+        <section id="garantia" class="section">
+            <div class="section-header">
+                <span class="section-icon">🛡️</span>
+                <h2>Garantía</h2>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>🏭 Garantía del Fabricante</h3>
+                    <p>Todos nuestros productos incluyen la garantía oficial del fabricante:</p>
+                    <ul>
+                        <li><strong>Laptops y Tablets:</strong> 12 meses</li>
+                        <li><strong>Smartphones:</strong> 12 meses</li>
+                        <li><strong>Accesorios:</strong> 6-12 meses</li>
+                        <li><strong>Audio:</strong> 12 meses</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>⭐ Garantía Extendida TechStore</h3>
+                    <p>Opcionalmente puedes adquirir nuestra garantía extendida que incluye:</p>
+                    <ul>
+                        <li>Protección adicional de 12-24 meses</li>
+                        <li>Cobertura contra daños accidentales</li>
+                        <li>Servicio técnico prioritario</li>
+                        <li>Reemplazo inmediato en caso de falla</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>🔧 Qué Cubre</h3>
+                    <ul>
+                        <li>Defectos de fabricación</li>
+                        <li>Fallas de hardware</li>
+                        <li>Problemas de software de fábrica</li>
+                        <li>Componentes defectuosos</li>
+                        <li>Mal funcionamiento sin causa aparente</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>❌ Qué NO Cubre</h3>
+                    <ul>
+                        <li>Daños por uso inadecuado</li>
+                        <li>Daños por líquidos</li>
+                        <li>Golpes o caídas</li>
+                        <li>Modificaciones no autorizadas</li>
+                        <li>Desgaste natural</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 2rem;">
+                <strong>Para hacer válida la garantía:</strong> Conserva tu factura de compra y contacta nuestro servicio técnico. Evaluaremos tu caso y te indicaremos los pasos a seguir. El proceso de garantía es rápido y sin complicaciones.
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <div class="contact-section">
+            <h2>¿Necesitas Ayuda Adicional?</h2>
+            <p>Nuestro equipo está disponible para asistirte</p>
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <div class="contact-method-icon">📧</div>
+                    <h3>Email</h3>
+                    <p>soporte@techstore.com</p>
+                    <p style="font-size: 0.9rem; opacity: 0.8;">Respuesta en 24h</p>
+                </div>
+                <div class="contact-method">
+                    <div class="contact-method-icon">📱</div>
+                    <h3>Teléfono</h3>
+                    <p>+1 (555) 123-4567</p>
+                    <p style="font-size: 0.9rem; opacity: 0.8;">Lun-Vie 9am-6pm</p>
+                </div>
+                <div class="contact-method">
+                    <div class="contact-method-icon">💬</div>
+                    <h3>Chat en Vivo</h3>
+                    <p>Disponible en el sitio web</p>
+                    <p style="font-size: 0.9rem; opacity: 0.8;">Lun-Vie 9am-8pm</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>TechStore</h3>
+                <p>Tu tienda de confianza para productos tecnológicos de alta calidad.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.html#productos">Productos</a></li>
+                    <li><a href="nosotros.html">Sobre Nosotros</a></li>
+                    <li><a href="atencion.html">Soporte</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Atención al Cliente</h3>
+                <ul>
+                    <li><a href="#faq">Preguntas Frecuentes</a></li>
+                    <li><a href="#envios">Envíos</a></li>
+                    <li><a href="#devoluciones">Devoluciones</a></li>
+                    <li><a href="#garantia">Garantía</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <ul>
+                    <li>📧 info@techstore.com</li>
+                    <li>📱 +1 (555) 123-4567</li>
+                    <li>📍 123 Tech Avenue, CA</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TechStore. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+<script src="./script/script_atencion.js"></script>
+</body>
+</html>
