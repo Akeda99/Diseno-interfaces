@@ -644,6 +644,7 @@ footer {
     .option-card ul li {
         font-size: 0.9rem;
         padding: 0.4rem 0;
+        padding-left: 2rem;
     }
 
     .btn {
@@ -796,6 +797,7 @@ footer {
 
     .option-card ul li {
         font-size: 0.85rem;
+        padding-left: 2rem;
     }
 
     .btn {
