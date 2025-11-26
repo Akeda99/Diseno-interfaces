@@ -299,7 +299,7 @@
                             <img src="${item.image}" style="width: 60px; height: 60px; object-fit: contain; margin-right: 1rem;">
                             <div style="flex: 1;">
                                 <h4>${item.name}</h4>
-                                <p style="color: #667eea; font-weight: bold;">${item.price.toFixed(2)}</p>
+                                <p style="color: #667eea; font-weight: bold;">S/.${item.price.toFixed(2)}</p>
                             </div>
                             <div style="display: flex; align-items: center; gap: 1rem;">
                                 <button onclick="updateQuantity(${item.id}, -1)" style="width: 30px; height: 30px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 5px;">-</button>

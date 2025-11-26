@@ -5,81 +5,98 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background: #f8f9fa;
+    color: #1a1a1a;
+    background: #fafafa;
+    overflow-x: hidden;
 }
 
-/* Header */
+/* ===== HEADER - MEJORADO ===== */
 header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 1rem 0;
+    background: #ffffff;
+    color: #1a1a1a;
+    padding: 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border-bottom: 1px solid #e5e7eb;
 }
 
 nav {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 2rem;
+    padding: 1.2rem clamp(1.5rem, 4vw, 3rem);
+    gap: 2rem;
+    flex-wrap: wrap;
 }
 
 .logo {
-    font-size: 1.8rem;
-    font-weight: bold;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    font-weight: 700;
     text-decoration: none;
-    color: white;
+    color: #000000;
+    letter-spacing: -1px;
+    text-transform: uppercase;
 }
 
 .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: clamp(1.5rem, 4vw, 3rem);
     list-style: none;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .nav-links a {
-    color: white;
+    color: #374151;
     text-decoration: none;
-    transition: opacity 0.3s;
+    transition: color 0.2s;
+    font-weight: 500;
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
+    letter-spacing: 0.3px;
+    white-space: nowrap;
 }
 
 .nav-links a:hover {
-    opacity: 0.8;
+    color: #000000;
 }
 
-/* Hero */
+/* ===== HERO - MEJORADO ===== */
 .hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #000000;
     color: white;
-    padding: 5rem 2rem;
+    padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 4vw, 3rem);
     text-align: center;
 }
 
 .hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    animation: fadeInDown 0.8s ease;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -2px;
+    line-height: 1.1;
+    animation: fadeInDown 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hero p {
-    font-size: 1.3rem;
+    font-size: clamp(1rem, 3vw, 1.2rem);
     max-width: 700px;
     margin: 0 auto;
-    opacity: 0.95;
-    animation: fadeInUp 0.8s ease;
+    opacity: 0.85;
+    font-weight: 300;
+    letter-spacing: 0.3px;
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes fadeInDown {
     from {
         opacity: 0;
-        transform: translateY(-30px);
+        transform: translateY(-20px);
     }
     to {
         opacity: 1;
@@ -90,7 +107,7 @@ nav {
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
@@ -98,94 +115,105 @@ nav {
     }
 }
 
-/* Main Container */
+/* ===== MAIN CONTAINER - MEJORADO ===== */
 .container {
-    max-width: 1200px;
-    margin: -3rem auto 4rem;
-    padding: 0 2rem;
+    max-width: 1400px;
+    margin: clamp(-2rem, -5vw, -3rem) auto clamp(3rem, 6vw, 5rem);
+    padding: 0 clamp(1rem, 4vw, 3rem);
 }
 
-/* Options Grid */
+/* ===== OPTIONS GRID - MEJORADO ===== */
 .options-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-    margin-bottom: 4rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
+    gap: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: clamp(3rem, 6vw, 5rem);
 }
 
 .option-card {
     background: white;
-    border-radius: 15px;
-    padding: 3rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: 0;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    border: 1px solid #e5e7eb;
     text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: all 0.3s;
     cursor: pointer;
 }
 
 .option-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    border-color: #d1d5db;
 }
 
 .option-icon {
-    font-size: 4rem;
-    margin-bottom: 1.5rem;
+    font-size: clamp(3rem, 8vw, 4rem);
+    margin-bottom: clamp(1rem, 3vw, 1.5rem);
+    color: #1a1a1a;
 }
 
 .option-card h2 {
-    color: #667eea;
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    color: #000000;
+    font-size: clamp(1.3rem, 4vw, 1.8rem);
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.8px;
 }
 
 .option-card p {
-    color: #666;
-    font-size: 1.1rem;
+    color: #374151;
+    font-size: clamp(0.95rem, 2.5vw, 1.05rem);
     line-height: 1.8;
     margin-bottom: 1.5rem;
 }
 
 .option-card ul {
     text-align: left;
-    color: #666;
+    color: #374151;
     list-style: none;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .option-card ul li {
-    padding: 0.5rem 0;
-    padding-left: 1.5rem;
+    padding: 0.7rem 0;
+    padding-left: 2rem;
     position: relative;
+    font-size: clamp(0.9rem, 2vw, 0.95rem);
 }
 
 .option-card ul li:before {
     content: "✓";
     position: absolute;
     left: 0;
-    color: #667eea;
-    font-weight: bold;
+    color: #000000;
+    font-weight: 700;
+    font-size: 1.1rem;
 }
 
 .btn {
     display: inline-block;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #000000;
     color: white;
-    padding: 1rem 2.5rem;
+    padding: clamp(0.9rem, 2.5vw, 1rem) clamp(2rem, 4vw, 2.8rem);
     border: none;
-    border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: bold;
+    border-radius: 0;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    font-weight: 600;
     cursor: pointer;
     text-decoration: none;
-    transition: transform 0.3s;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn:hover {
-    transform: translateY(-3px);
+    background: #1f2937;
 }
 
-/* Modal */
+/* ===== MODAL - MEJORADO ===== */
 .modal {
     display: none;
     position: fixed;
@@ -193,12 +221,13 @@ nav {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.6);
     z-index: 2000;
     align-items: center;
     justify-content: center;
     overflow-y: auto;
-    padding: 2rem;
+    padding: clamp(0.5rem, 3vw, 2rem);
+    backdrop-filter: blur(4px);
 }
 
 .modal.active {
@@ -207,19 +236,20 @@ nav {
 
 .modal-content {
     background: white;
-    padding: 3rem;
-    border-radius: 15px;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    border-radius: 0;
     width: 100%;
     max-width: 600px;
     position: relative;
-    animation: slideUp 0.5s ease;
+    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     max-height: 90vh;
     overflow-y: auto;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
 @keyframes slideUp {
     from {
-        transform: translateY(50px);
+        transform: translateY(30px);
         opacity: 0;
     }
     to {
@@ -230,176 +260,216 @@ nav {
 
 .close-modal {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 2rem;
+    top: clamp(1rem, 3vw, 1.5rem);
+    right: clamp(1rem, 3vw, 1.5rem);
+    font-size: clamp(1.3rem, 3vw, 1.5rem);
     cursor: pointer;
-    color: #888;
+    color: #9ca3af;
     background: none;
     border: none;
-    width: 40px;
-    height: 40px;
+    width: clamp(35px, 8vw, 40px);
+    height: clamp(35px, 8vw, 40px);
     border-radius: 50%;
-    transition: background 0.3s;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
 .close-modal:hover {
-    background: #f0f0f0;
+    color: #000000;
+    background: #f9fafb;
 }
 
 .modal-content h2 {
-    color: #667eea;
-    margin-bottom: 0.5rem;
-    font-size: 2rem;
+    color: #000000;
+    margin-bottom: 0.7rem;
+    font-size: clamp(1.3rem, 4vw, 1.8rem);
+    font-weight: 700;
+    letter-spacing: -0.8px;
+    padding-right: clamp(2rem, 8vw, 3rem);
 }
 
 .modal-content .subtitle {
-    color: #666;
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
+    color: #6b7280;
+    margin-bottom: clamp(2rem, 4vw, 2.5rem);
+    font-size: clamp(0.95rem, 2.5vw, 1.05rem);
 }
 
+/* ===== FORMS - MEJORADO ===== */
 .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: clamp(1.25rem, 3vw, 1.5rem);
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-    color: #333;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+    color: #374151;
+    font-size: clamp(0.85rem, 2vw, 0.9rem);
+    letter-spacing: 0.3px;
 }
 
 .form-group input,
 .form-group textarea,
 .form-group select {
     width: 100%;
-    padding: 0.8rem;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
+    padding: clamp(0.8rem, 2vw, 0.9rem) 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0;
+    font-size: 16px;
     font-family: inherit;
-    transition: border-color 0.3s;
+    transition: all 0.2s;
+    background: #fafafa;
 }
 
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
     outline: none;
-    border-color: #667eea;
+    border-color: #000000;
+    background: white;
 }
 
 .form-group textarea {
     resize: vertical;
-    min-height: 120px;
+    min-height: clamp(100px, 20vw, 120px);
 }
 
 .form-row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
     gap: 1rem;
 }
 
 .submit-btn {
     width: 100%;
-    padding: 1rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: clamp(1rem, 3vw, 1.1rem);
+    background: #000000;
     color: white;
     border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: bold;
+    border-radius: 0;
+    font-size: clamp(0.95rem, 2vw, 1rem);
+    font-weight: 600;
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+    min-height: 50px;
 }
 
 .submit-btn:hover {
-    transform: translateY(-2px);
+    background: #1f2937;
 }
 
 .submit-btn:active {
-    transform: translateY(0);
+    transform: scale(0.98);
 }
 
-/* Contact Info */
+/* ===== CONTACT INFO - MEJORADO ===== */
 .contact-info {
     background: white;
-    padding: 3rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    margin-bottom: 4rem;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    border-radius: 0;
+    border: 1px solid #e5e7eb;
+    margin-bottom: clamp(3rem, 6vw, 5rem);
 }
 
 .contact-info h2 {
-    color: #667eea;
-    font-size: 2rem;
-    margin-bottom: 2rem;
+    color: #000000;
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
+    margin-bottom: clamp(2rem, 4vw, 2.5rem);
     text-align: center;
+    font-weight: 700;
+    letter-spacing: -0.8px;
 }
 
 .info-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+    gap: clamp(1.5rem, 3vw, 2rem);
 }
 
 .info-item {
     text-align: center;
-    padding: 2rem;
-    background: #f8f9fa;
-    border-radius: 10px;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    background: #fafafa;
+    border-radius: 0;
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s;
+}
+
+.info-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    border-color: #d1d5db;
 }
 
 .info-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: clamp(2.5rem, 6vw, 3rem);
+    margin-bottom: 1.2rem;
+    color: #1a1a1a;
 }
 
 .info-item h3 {
-    color: #333;
-    margin-bottom: 0.5rem;
+    color: #000000;
+    margin-bottom: 0.7rem;
+    font-weight: 600;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    letter-spacing: -0.3px;
 }
 
 .info-item p {
-    color: #666;
+    color: #374151;
     word-break: break-word;
+    font-size: clamp(0.9rem, 2vw, 0.95rem);
 }
 
-/* Success Message */
+/* ===== SUCCESS MESSAGE - MEJORADO ===== */
 .success-message {
-    background: #d4edda;
-    border: 2px solid #28a745;
-    color: #155724;
-    padding: 1.5rem;
-    border-radius: 8px;
+    background: #f0fdf4;
+    border: 2px solid #22c55e;
+    color: #166534;
+    padding: clamp(1.25rem, 3vw, 1.5rem);
+    border-radius: 0;
     margin-bottom: 1.5rem;
     display: none;
     text-align: center;
+    font-weight: 500;
+    font-size: clamp(0.9rem, 2vw, 0.95rem);
 }
 
 .success-message.show {
     display: block;
 }
 
-/* Footer */
+/* ===== FOOTER - MEJORADO ===== */
 footer {
-    background: #2c3e50;
+    background: #111827;
     color: white;
-    padding: 3rem 2rem 1rem;
-    margin-top: 4rem;
+    padding: clamp(3rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem) 2rem;
+    margin-top: clamp(3rem, 6vw, 5rem);
 }
 
 .footer-content {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+    gap: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 3rem;
 }
 
 .footer-section h3 {
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+    font-size: clamp(0.9rem, 2vw, 0.95rem);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-section p {
+    font-size: clamp(0.85rem, 2vw, 0.9rem);
 }
 
 .footer-section ul {
@@ -407,13 +477,14 @@ footer {
 }
 
 .footer-section li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.7rem;
 }
 
 .footer-section a {
-    color: #bbb;
+    color: #9ca3af;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color 0.2s;
+    font-size: clamp(0.85rem, 2vw, 0.9rem);
 }
 
 .footer-section a:hover {
@@ -423,486 +494,82 @@ footer {
 .footer-bottom {
     text-align: center;
     padding-top: 2rem;
-    border-top: 1px solid #444;
-    color: #bbb;
+    border-top: 1px solid #374151;
+    color: #9ca3af;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
 }
 
-/* ==================== RESPONSIVE DESIGN ==================== */
+/* ===== RESPONSIVE BREAKPOINTS ESPECÍFICOS ===== */
 
-/* Tablets y pantallas medianas (768px - 1024px) */
-@media (max-width: 1024px) {
-    nav {
-        padding: 0 1.5rem;
-    }
-
-    .hero {
-        padding: 4rem 1.5rem;
-    }
-
-    .hero h1 {
-        font-size: 3rem;
-    }
-
-    .hero p {
-        font-size: 1.2rem;
-    }
-
-    .container {
-        margin: -2.5rem auto 3rem;
-    }
-
-    .options-grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
-
-    .option-card {
-        padding: 2.5rem;
-    }
-}
-
-/* Tablets pequeñas y móviles grandes (600px - 768px) */
+/* Tablet */
 @media (max-width: 768px) {
-    /* Header */
     nav {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1rem;
-    }
-
-    .logo {
-        font-size: 1.5rem;
+        justify-content: center;
     }
 
     .nav-links {
-        gap: 1rem;
-        font-size: 0.9rem;
+        width: 100%;
+        justify-content: center;
     }
 
-    /* Hero */
-    .hero {
-        padding: 3rem 1.5rem;
-    }
-
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero p {
-        font-size: 1.1rem;
-    }
-
-    /* Container */
-    .container {
-        margin: -2rem auto 2rem;
-        padding: 0 1rem;
-    }
-
-    /* Options Grid */
     .options-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
-        margin-bottom: 3rem;
-    }
-
-    .option-card {
-        padding: 2rem;
-    }
-
-    .option-icon {
-        font-size: 3.5rem;
-    }
-
-    .option-card h2 {
-        font-size: 1.75rem;
-    }
-
-    .option-card p {
-        font-size: 1rem;
-    }
-
-    /* Modal */
-    .modal {
-        padding: 1rem;
-    }
-
-    .modal-content {
-        padding: 2rem;
-        max-height: 85vh;
-    }
-
-    .modal-content h2 {
-        font-size: 1.75rem;
-    }
-
-    .modal-content .subtitle {
-        font-size: 1rem;
     }
 
     .form-row {
         grid-template-columns: 1fr;
     }
 
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-        font-size: 16px; /* Evita zoom en iOS */
-    }
-
-    /* Contact Info */
-    .contact-info {
-        padding: 2rem;
-        margin-bottom: 3rem;
-    }
-
-    .contact-info h2 {
-        font-size: 1.75rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .info-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    /* Footer */
-    footer {
-        padding: 2rem 1rem 1rem;
-    }
-
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-}
-
-/* Móviles (menos de 600px) */
-@media (max-width: 600px) {
-    /* Header */
-    nav {
-        padding: 0.75rem;
-    }
-
-    .logo {
-        font-size: 1.4rem;
-    }
-
-    .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.75rem;
-        font-size: 0.85rem;
-    }
-
-    /* Hero */
-    .hero {
-        padding: 2.5rem 1rem;
-    }
-
-    .hero h1 {
-        font-size: 2rem;
-    }
-
-    .hero p {
-        font-size: 1rem;
-    }
-
-    /* Container */
-    .container {
-        margin: -1.5rem auto 1.5rem;
-        padding: 0 0.75rem;
-    }
-
-    /* Options Grid */
-    .options-grid {
-        gap: 1.25rem;
-        margin-bottom: 2rem;
-    }
-
-    .option-card {
-        padding: 1.5rem;
-    }
-
-    .option-icon {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-    }
-
-    .option-card h2 {
-        font-size: 1.5rem;
-        margin-bottom: 0.75rem;
-    }
-
-    .option-card p {
-        font-size: 0.95rem;
-        margin-bottom: 1rem;
-    }
-
-    .option-card ul {
-        margin-bottom: 1.25rem;
-    }
-
-    .option-card ul li {
-        font-size: 0.9rem;
-        padding: 0.4rem 0;
-        padding-left: 2rem;
-    }
-
-    .btn {
-        padding: 0.875rem 2rem;
-        font-size: 1rem;
-    }
-
-    /* Modal */
     .modal {
-        padding: 0.5rem;
         align-items: flex-start;
         padding-top: 2rem;
     }
 
-    .modal-content {
-        padding: 1.5rem;
-        max-height: 90vh;
-        border-radius: 12px;
+    .info-grid {
+        grid-template-columns: 1fr;
     }
 
-    .close-modal {
-        top: 0.5rem;
-        right: 0.5rem;
-        width: 35px;
-        height: 35px;
-        font-size: 1.75rem;
-    }
-
-    .modal-content h2 {
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
-        padding-right: 2rem;
-    }
-
-    .modal-content .subtitle {
-        font-size: 0.95rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .form-group {
-        margin-bottom: 1.25rem;
-    }
-
-    .form-group label {
-        font-size: 0.95rem;
-        margin-bottom: 0.4rem;
-    }
-
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-        padding: 0.75rem;
-        font-size: 16px;
-    }
-
-    .form-group textarea {
-        min-height: 100px;
-    }
-
-    .submit-btn {
-        padding: 0.875rem;
-        font-size: 1rem;
-    }
-
-    .success-message {
-        padding: 1.25rem;
-        font-size: 0.95rem;
-    }
-
-    /* Contact Info */
-    .contact-info {
-        padding: 1.5rem;
-        margin-bottom: 2rem;
-    }
-
-    .contact-info h2 {
-        font-size: 1.5rem;
-        margin-bottom: 1.25rem;
-    }
-
-    .info-item {
-        padding: 1.5rem;
-    }
-
-    .info-icon {
-        font-size: 2.5rem;
-        margin-bottom: 0.75rem;
-    }
-
-    .info-item h3 {
-        font-size: 1.1rem;
-        margin-bottom: 0.4rem;
-    }
-
-    .info-item p {
-        font-size: 0.9rem;
-    }
-
-    /* Footer */
-    footer {
-        font-size: 0.9rem;
-    }
-
-    .footer-section h3 {
-        font-size: 1.1rem;
-        margin-bottom: 0.75rem;
-    }
-
-    .footer-bottom {
-        font-size: 0.85rem;
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
     }
 }
 
-/* Móviles pequeños (menos de 400px) */
-@media (max-width: 400px) {
-    /* Hero */
-    .hero {
-        padding: 2rem 0.75rem;
-    }
-
-    .hero h1 {
-        font-size: 1.75rem;
-    }
-
-    .hero p {
-        font-size: 0.95rem;
-    }
-
-    /* Container */
+/* Mobile Small */
+@media (max-width: 600px) {
     .container {
-        padding: 0 0.5rem;
+        margin-top: -1.5rem;
     }
 
-    /* Option Cards */
-    .option-card {
-        padding: 1.25rem;
-    }
-
-    .option-icon {
-        font-size: 2.5rem;
-    }
-
-    .option-card h2 {
-        font-size: 1.3rem;
-    }
-
-    .option-card p {
-        font-size: 0.9rem;
+    .option-card ul {
+        margin-bottom: 1.5rem;
     }
 
     .option-card ul li {
-        font-size: 0.85rem;
+        padding: 0.5rem 0;
         padding-left: 2rem;
     }
 
-    .btn {
-        padding: 0.75rem 1.5rem;
-        font-size: 0.95rem;
+    .modal-content {
+        max-height: 90vh;
     }
+}
 
-    /* Modal */
+/* Extra Small */
+@media (max-width: 400px) {
     .modal {
         padding: 0.25rem;
     }
 
-    .modal-content {
-        padding: 1.25rem;
-    }
-
-    .modal-content h2 {
-        font-size: 1.3rem;
-    }
-
-    .form-group label {
-        font-size: 0.9rem;
-    }
-
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-        padding: 0.65rem;
-    }
-
-    /* Contact Info */
-    .contact-info {
-        padding: 1.25rem;
-    }
-
-    .info-item {
-        padding: 1.25rem;
+    .option-card ul li:before {
+        font-size: 1rem;
     }
 }
 
-/* Móviles muy pequeños (menos de 320px) */
-@media (max-width: 320px) {
-    .logo {
-        font-size: 1.2rem;
-    }
-
-    .nav-links {
-        font-size: 0.8rem;
-    }
-
-    .hero h1 {
-        font-size: 1.5rem;
-    }
-
-    .option-card h2 {
-        font-size: 1.2rem;
-    }
-
-    .modal-content {
-        padding: 1rem;
-    }
-}
-
-/* Mejoras de accesibilidad táctil para móviles */
-@media (hover: none) and (pointer: coarse) {
-    .btn {
-        padding: 1rem 2.5rem;
-        min-height: 48px;
-    }
-
-    .submit-btn {
-        padding: 1.1rem;
-        min-height: 50px;
-    }
-
-    .close-modal {
-        width: 44px;
-        height: 44px;
-        min-height: 44px;
-    }
-
-    .nav-links a {
-        padding: 0.5rem;
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-    }
-
-    .option-card {
-        padding: 2rem;
-    }
-}
-
-/* Landscape en móviles */
+/* ===== LANDSCAPE EN MÓVILES ===== */
 @media (max-width: 768px) and (orientation: landscape) {
     .hero {
-        padding: 2rem 1.5rem;
-    }
-
-    .hero h1 {
-        font-size: 2rem;
-    }
-
-    .hero p {
-        font-size: 1rem;
+        padding: 2.5rem clamp(1.5rem, 4vw, 3rem);
     }
 
     .options-grid {
@@ -918,13 +585,141 @@ footer {
     }
 }
 
-/* Optimización para pantallas muy grandes */
+/* ===== PANTALLAS GRANDES ===== */
 @media (min-width: 1400px) {
     .container {
-        max-width: 1400px;
+        max-width: 1500px;
     }
 
     .options-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ===== DISPOSITIVOS TÁCTILES ===== */
+@media (hover: none) and (pointer: coarse) {
+    .btn {
+        padding: 1rem 2.5rem;
+        min-height: 50px;
+    }
+
+    .submit-btn {
+        padding: 1.2rem;
+        min-height: 54px;
+    }
+
+    .close-modal {
+        width: 44px;
+        height: 44px;
+        min-height: 44px;
+    }
+
+    .nav-links a {
+        padding: 0.5rem;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .option-card {
+        padding: 2rem;
+    }
+}
+
+/* ===== OPTIMIZACIONES ADICIONALES ===== */
+
+/* Prevención de overflow */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Focus visible para accesibilidad */
+*:focus-visible {
+    outline: 2px solid #000000;
+    outline-offset: 2px;
+}
+
+/* Smooth scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Respeto a preferencias de movimiento */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* ===== MEJORAS DE RENDIMIENTO ===== */
+.modal-content {
+    will-change: transform, opacity;
+}
+
+.option-card:hover,
+.info-item:hover {
+    will-change: transform;
+}
+
+/* ===== ESTADOS ADICIONALES ===== */
+.submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.submit-btn:disabled:hover {
+    background: #000000;
+    transform: none;
+}
+
+/* Loading state */
+.submit-btn.loading {
+    position: relative;
+    color: transparent;
+}
+
+.submit-btn.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ===== MEJORA DE SCROLL EN MODAL ===== */
+.modal-content {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Asegurar que el modal no se corte en pantallas pequeñas */
+@media (max-height: 600px) {
+    .modal {
+        align-items: flex-start;
+    }
+    
+    .modal-content {
+        margin: 1rem 0;
     }
 }
