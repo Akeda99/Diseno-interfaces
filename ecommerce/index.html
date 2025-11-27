@@ -7,31 +7,42 @@
     <link rel="stylesheet" href="./styles/styles_index.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav>
-            <div class="logo">🛒 TechStore</div>
-            <div class="nav-center">
-                <ul class="nav-links">
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#productos">Productos</a></li>
-                    <li><a href="#testimonios">Testimonios</a></li>
-                    <li><a href="nosotros.html">Nosotros</a></li>
-                    <li><a href="atencion.html">Soporte</a></li>
-                    <li><a href="contacto.html">Contacto</a></li>
-                </ul>
+ <header>
+    <nav>
+        <div class="logo">🛒 TechStore</div>
+        
+        <div class="nav-center" id="navMenu">
+            <ul class="nav-links">
+                <li><a href="#inicio" onclick="closeMenu()">Inicio</a></li>
+                <li><a href="#productos" onclick="closeMenu()">Productos</a></li>
+                <li><a href="#testimonios" onclick="closeMenu()">Testimonios</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="atencion.html">Soporte</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </div>
+        
+        <div class="user-section">
+            <div id="userSection">
+                <button class="login-btn" onclick="openLoginModal()">Iniciar Sesión</button>
             </div>
-            <div class="user-section">
-                <div class="cart-icon" onclick="openCart()">
-                    🛒
-                    <span class="cart-count" id="cartCount">0</span>
-                </div>
-                <div id="userSection">
-                    <button class="login-btn" onclick="openLoginModal()">Iniciar Sesión</button>
-                </div>
+            <div class="cart-icon" onclick="openCart()">
+                🛒
+                <span class="cart-count" id="cartCount">0</span>
             </div>
-        </nav>
-    </header>
+        </div>
+        
+        <!-- Hamburger Button - Ahora al final -->
+        <button class="hamburger-btn" onclick="toggleMenu()" aria-label="Menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+    
+    <!-- Overlay para cerrar el menú -->
+    <div class="nav-overlay" id="navOverlay" onclick="closeMenu()"></div>
+</header>
 
     <!-- Login/Register Modal -->
     <div class="modal" id="authModal">
@@ -294,7 +305,8 @@
             <p>&copy; 2024 TechStore. Todos los derechos reservados.</p>
         </div>
     </footer>
-
+<script src="./script/script_hamburguesa.js"></script>
 <script src="./script/script_index.js"></script>
+
 </body>
 </html>

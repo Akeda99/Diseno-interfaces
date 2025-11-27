@@ -32,6 +32,7 @@ nav {
     align-items: center;
     padding: 1rem 2rem;
     gap: 1.5rem;
+    position: relative;
 }
 
 .logo {
@@ -42,6 +43,38 @@ nav {
     letter-spacing: -1px;
     text-transform: uppercase;
     white-space: nowrap;
+}
+
+/* Hamburger Menu Button */
+.hamburger-btn {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+.hamburger-btn span {
+    width: 24px;
+    height: 2px;
+    background: #000000;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.hamburger-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
 }
 
 .nav-center {
@@ -807,10 +840,9 @@ footer {
 /* Tablets pequeñas y móviles grandes */
 @media (max-width: 768px) {
     nav {
-        grid-template-columns: auto 1fr;
+        grid-template-columns: 1fr auto auto auto;
         grid-template-areas: 
-            "logo user"
-            "nav nav";
+            "logo user cart hamburger";
         padding: 1rem 1.5rem;
         gap: 1rem;
     }
@@ -819,13 +851,77 @@ footer {
         font-size: 1.2rem;
     }
     
+    .hamburger-btn {
+        display: flex;
+        grid-area: hamburger;
+    }
+    
+    .user-section {
+        grid-area: user;
+        gap: 0.8rem;
+    }
+    
+    .cart-icon {
+        grid-area: cart;
+    }
+    
     .nav-center {
-        width: 100%;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 280px;
+        height: 100vh;
+        background: white;
+        transition: left 0.3s ease;
+        z-index: 1000;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        padding-top: 80px;
+    }
+    
+    .nav-center.active {
+        left: 0;
     }
     
     .nav-links {
-        gap: 1.5rem;
-        font-size: 0.9rem;
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+        padding: 0;
+    }
+    
+    .nav-links li {
+        width: 100%;
+        border-bottom: 1px solid #e5e7eb;
+    }
+    
+    .nav-links a {
+        display: block;
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+        width: 100%;
+    }
+    
+    .nav-links a:hover {
+        background: #f9fafb;
+    }
+    
+    /* Overlay para cerrar el menú */
+    .nav-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 999;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .nav-overlay.active {
+        display: block;
+        opacity: 1;
     }
     
     .hero {
@@ -917,9 +1013,8 @@ footer {
         font-size: 1.1rem;
     }
     
-    .nav-links {
-        gap: 1rem;
-        font-size: 0.85rem;
+    .nav-center {
+        width: 260px;
     }
     
     .login-btn {
@@ -1068,9 +1163,8 @@ footer {
 
 /* Móviles muy pequeños */
 @media (max-width: 360px) {
-    .nav-links {
-        gap: 0.7rem;
-        font-size: 0.8rem;
+    .nav-center {
+        width: 240px;
     }
     
     .hero h1 {
