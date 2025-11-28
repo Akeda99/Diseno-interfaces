@@ -1,4 +1,4 @@
-        // Products Data
+// Products Data
         const products = [
             { id: 1, name: "Laptop Pro 2024", category: "Laptops", brand: "TechPro", price: 1299.99, image: "img/laptop.jpg" },
             { id: 2, name: "Smartphone X Plus", category: "Smartphones", brand: "SmartTech", price: 899.99, image: "img/smartphone.jpg" },
@@ -15,6 +15,97 @@
         ];
 
         let currentProducts = [...products];
+
+        // ============================================
+        // EXPRESIONES REGULARES PARA VALIDACIÓN
+        // ============================================
+        const validators = {
+            // Email: debe tener formato válido usuario@dominio.ext
+            email: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+            
+            // Password: mínimo 8 caracteres, al menos una letra y un número
+            password: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,}$/,
+            
+            // Nombre: solo letras (incluyendo acentos), espacios, mínimo 2 caracteres
+            name: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{2,50}$/,
+            
+            // Precio: números con hasta 2 decimales opcionales
+            price: /^\d+(\.\d{1,2})?$/,
+            
+            // Teléfono Perú: 9 dígitos, puede empezar con +51
+            phone: /^(\+51)?[0-9]{9}$/,
+            
+            // DNI Perú: 8 dígitos
+            dni: /^\d{8}$/,
+            
+            // Dirección: letras, números, espacios, comas y puntos
+            address: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s,.-]{5,100}$/,
+            
+            // Código postal: 5 dígitos
+            zipCode: /^\d{5}$/
+        };
+
+        // Función general de validación
+        function validateField(value, type) {
+            if (!value || value.trim() === '') return false;
+            return validators[type] ? validators[type].test(value.trim()) : false;
+        }
+
+        // Mensajes de error personalizados
+        const errorMessages = {
+            email: 'Ingrese un correo electrónico válido (ejemplo: usuario@correo.com)',
+            password: 'La contraseña debe tener mínimo 8 caracteres, al menos una letra y un número',
+            name: 'El nombre debe contener solo letras y tener entre 2 y 50 caracteres',
+            price: 'Ingrese un precio válido (ejemplo: 100 o 100.50)',
+            phone: 'Ingrese un teléfono válido de 9 dígitos',
+            dni: 'El DNI debe tener 8 dígitos',
+            address: 'Ingrese una dirección válida',
+            zipCode: 'El código postal debe tener 5 dígitos'
+        };
+
+        // Función para mostrar errores de validación
+        function showFieldError(inputId, errorMessage) {
+            const input = document.getElementById(inputId);
+            if (!input) return;
+            
+            // Remover error anterior si existe
+            const existingError = input.parentElement.querySelector('.field-error');
+            if (existingError) existingError.remove();
+            
+            // Agregar borde rojo al input
+            input.style.border = '2px solid #d63031';
+            
+            // Crear mensaje de error
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'field-error';
+            errorDiv.style.cssText = `
+                color: #d63031;
+                font-size: 0.85rem;
+                margin-top: 0.25rem;
+                display: block;
+            `;
+            errorDiv.textContent = errorMessage;
+            
+            // Insertar después del input
+            input.parentElement.appendChild(errorDiv);
+        }
+
+        // Función para limpiar errores de validación
+        function clearFieldError(inputId) {
+            const input = document.getElementById(inputId);
+            if (!input) return;
+            
+            input.style.border = '';
+            const errorDiv = input.parentElement.querySelector('.field-error');
+            if (errorDiv) errorDiv.remove();
+        }
+
+        // Sanitizar texto para prevenir XSS
+        function sanitizeText(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
 
         // Initialize products
         function displayProducts(productsToShow) {
@@ -34,7 +125,7 @@
             document.getElementById('productCount').textContent = `Mostrando ${productsToShow.length} productos`;
         }
 
-        // Filter products
+        // Filter products con validación de precios
         function filterProducts() {
             let filtered = [...products];
 
@@ -59,9 +150,31 @@
                 filtered = filtered.filter(p => brands.includes(p.brand));
             }
 
-            // Price filter
-            const minPrice = parseFloat(document.getElementById('minPrice').value) || 0;
-            const maxPrice = parseFloat(document.getElementById('maxPrice').value) || Infinity;
+            // Price filter con validación
+            const minPriceInput = document.getElementById('minPrice').value;
+            const maxPriceInput = document.getElementById('maxPrice').value;
+            
+            let minPrice = 0;
+            let maxPrice = Infinity;
+            
+            // Validar precio mínimo
+            if (minPriceInput && !validateField(minPriceInput, 'price')) {
+                showFieldError('minPrice', 'Precio inválido');
+                return;
+            } else {
+                clearFieldError('minPrice');
+                minPrice = parseFloat(minPriceInput) || 0;
+            }
+            
+            // Validar precio máximo
+            if (maxPriceInput && !validateField(maxPriceInput, 'price')) {
+                showFieldError('maxPrice', 'Precio inválido');
+                return;
+            } else {
+                clearFieldError('maxPrice');
+                maxPrice = parseFloat(maxPriceInput) || Infinity;
+            }
+            
             filtered = filtered.filter(p => p.price >= minPrice && p.price <= maxPrice);
 
             currentProducts = filtered;
@@ -130,23 +243,62 @@
             document.getElementById('authModal').classList.remove('active');
             document.getElementById('loginError').classList.remove('show');
             document.getElementById('registerError').classList.remove('show');
+            
+            // Limpiar errores de campos
+            clearFieldError('loginEmail');
+            clearFieldError('loginPassword');
+            clearFieldError('registerName');
+            clearFieldError('registerEmail');
+            clearFieldError('registerPassword');
         }
 
         function showLoginForm() {
             document.getElementById('loginForm').style.display = 'block';
             document.getElementById('registerForm').style.display = 'none';
+            
+            // Limpiar errores
+            clearFieldError('loginEmail');
+            clearFieldError('loginPassword');
         }
 
         function showRegisterForm() {
             document.getElementById('loginForm').style.display = 'none';
             document.getElementById('registerForm').style.display = 'block';
+            
+            // Limpiar errores
+            clearFieldError('registerName');
+            clearFieldError('registerEmail');
+            clearFieldError('registerPassword');
         }
 
+        // Login con validación
         function handleLogin(event) {
             event.preventDefault();
-            const email = document.getElementById('loginEmail').value;
+            
+            const email = document.getElementById('loginEmail').value.trim();
             const password = document.getElementById('loginPassword').value;
+            
+            let hasError = false;
 
+            // Validar email
+            if (!validateField(email, 'email')) {
+                showFieldError('loginEmail', errorMessages.email);
+                hasError = true;
+            } else {
+                clearFieldError('loginEmail');
+            }
+
+            // Validar contraseña
+            if (!password || password.length < 6) {
+                showFieldError('loginPassword', 'La contraseña debe tener al menos 6 caracteres');
+                hasError = true;
+            } else {
+                clearFieldError('loginPassword');
+            }
+
+            if (hasError) return;
+
+            // Buscar usuario
             const user = users.find(u => u.email === email && u.password === password);
 
             if (user) {
@@ -163,12 +315,43 @@
             }
         }
 
+        // Registro con validación completa
         function handleRegister(event) {
             event.preventDefault();
-            const name = document.getElementById('registerName').value;
-            const email = document.getElementById('registerEmail').value;
+            
+            const name = document.getElementById('registerName').value.trim();
+            const email = document.getElementById('registerEmail').value.trim();
             const password = document.getElementById('registerPassword').value;
+            
+            let hasError = false;
 
+            // Validar nombre
+            if (!validateField(name, 'name')) {
+                showFieldError('registerName', errorMessages.name);
+                hasError = true;
+            } else {
+                clearFieldError('registerName');
+            }
+
+            // Validar email
+            if (!validateField(email, 'email')) {
+                showFieldError('registerEmail', errorMessages.email);
+                hasError = true;
+            } else {
+                clearFieldError('registerEmail');
+            }
+
+            // Validar contraseña
+            if (!validateField(password, 'password')) {
+                showFieldError('registerPassword', errorMessages.password);
+                hasError = true;
+            } else {
+                clearFieldError('registerPassword');
+            }
+
+            if (hasError) return;
+
+            // Verificar si el email ya existe
             if (users.find(u => u.email === email)) {
                 const errorDiv = document.getElementById('registerError');
                 errorDiv.textContent = 'Este correo ya está registrado';
@@ -176,10 +359,11 @@
                 return;
             }
 
+            // Crear nuevo usuario con datos sanitizados
             const newUser = {
                 id: Date.now(),
-                name: name,
-                email: email,
+                name: sanitizeText(name),
+                email: email.toLowerCase(),
                 password: password,
                 cart: []
             };
@@ -212,7 +396,7 @@
                 userSection.innerHTML = `
                     <div class="user-info">
                         <div class="user-avatar">${initials}</div>
-                        <span>${currentUser.name.split(' ')[0]}</span>
+                        <span>${sanitizeText(currentUser.name.split(' ')[0])}</span>
                         <button class="logout-btn" onclick="logout()">Salir</button>
                     </div>
                 `;
@@ -298,7 +482,7 @@
                         <div style="display: flex; align-items: center; padding: 1rem; border-bottom: 1px solid #eee;">
                             <img src="${item.image}" style="width: 60px; height: 60px; object-fit: contain; margin-right: 1rem;">
                             <div style="flex: 1;">
-                                <h4>${item.name}</h4>
+                                <h4>${sanitizeText(item.name)}</h4>
                                 <p style="color: #667eea; font-weight: bold;">S/.${item.price.toFixed(2)}</p>
                             </div>
                             <div style="display: flex; align-items: center; gap: 1rem;">
@@ -450,7 +634,7 @@
                     </p>
                     <p style="color: #888; font-size: 1rem; margin-bottom: 2rem;">
                         Hemos enviado un correo de confirmación a:<br>
-                        <strong style="color: #667eea;">${email}</strong>
+                        <strong style="color: #667eea;">${sanitizeText(email)}</strong>
                     </p>
                     <button onclick="this.parentElement.parentElement.remove()" style="
                         padding: 1rem 3rem;
@@ -507,6 +691,14 @@
                     transform: translateX(400px);
                     opacity: 0;
                 }
+            }
+            .field-error {
+                animation: shake 0.3s ease;
+            }
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-5px); }
+                75% { transform: translateX(5px); }
             }
         `;
         document.head.appendChild(style);
